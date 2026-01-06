@@ -1,11 +1,11 @@
 // Contract Addresses - UPDATE THESE AFTER DEPLOYMENT
-export const FACTORY_ADDRESS = process.env.VITE_FACTORY_ADDRESS || '0xf4246b4eC3CC7eF8c9F5BB615E0E545973013A15';
-export const USDC_ADDRESS = process.env.VITE_USDC_ADDRESS || '0x3600000000000000000000000000000000000000';
+export const FACTORY_ADDRESS = import.meta.env.VITE_FACTORY_ADDRESS || '0xf4246b4eC3CC7eF8c9F5BB615E0E545973013A15';
+export const USDC_ADDRESS = import.meta.env.VITE_USDC_ADDRESS || '0x3600000000000000000000000000000000000000';
 
 // Network Configuration
-export const CHAIN_ID = 5042002; // Arc Network chain ID
+export const CHAIN_ID = parseInt(import.meta.env.VITE_CHAIN_ID || '5042002'); // Arc Network testnet
 export const CHAIN_NAME = 'Arc Network';
-export const RPC_URL = process.env.VITE_RPC_URL || 'https://rpc.testnet.arc.network';
+export const RPC_URL = import.meta.env.VITE_RPC_URL || 'https://rpc.testnet.arc.network';
 export const BLOCK_EXPLORER = 'https://testnet.arcscan.app/';
 
 // Market Categories
