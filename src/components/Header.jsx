@@ -1,6 +1,6 @@
 import React from 'react';
 import { useWallet } from '../context/WalletContext';
-import { Activity, Wallet } from 'lucide-react';
+import { Activity, Wallet, PlusCircle } from 'lucide-react';
 
 const Header = ({ onNavigate, currentPage }) => {
   const { connected, address, disconnectWallet } = useWallet();
@@ -21,7 +21,7 @@ const Header = ({ onNavigate, currentPage }) => {
         <nav className="flex items-center gap-6">
           <button
             onClick={() => onNavigate('markets')}
-            className={`font-medium transition ${
+            className={`font-medium transition pb-1 ${
               currentPage === 'markets'
                 ? 'text-purple-600 border-b-2 border-purple-600'
                 : 'text-gray-600 hover:text-gray-900'
@@ -29,16 +29,33 @@ const Header = ({ onNavigate, currentPage }) => {
           >
             Markets
           </button>
-          <button
-            onClick={() => onNavigate('profile')}
-            className={`font-medium transition ${
-              currentPage === 'profile'
-                ? 'text-purple-600 border-b-2 border-purple-600'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Portfolio
-          </button>
+          
+          {connected && (
+            <>
+              <button
+                onClick={() => onNavigate('create')}
+                className={`font-medium transition pb-1 flex items-center gap-2 ${
+                  currentPage === 'create'
+                    ? 'text-purple-600 border-b-2 border-purple-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                <PlusCircle className="w-4 h-4" />
+                Create
+              </button>
+              
+              <button
+                onClick={() => onNavigate('profile')}
+                className={`font-medium transition pb-1 ${
+                  currentPage === 'profile'
+                    ? 'text-purple-600 border-b-2 border-purple-600'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                Portfolio
+              </button>
+            </>
+          )}
           
           {connected && (
             <button
